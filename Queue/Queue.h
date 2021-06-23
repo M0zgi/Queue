@@ -3,6 +3,7 @@
 #include"MyData.h"
 #include"TemplateArray.h"
 
+//очередь по порядку "Кто первый пришел, тот первый ушел"
 template<class T>
 class Queue
 {

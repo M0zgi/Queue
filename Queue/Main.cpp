@@ -62,10 +62,16 @@ int main()
 
 	q.print();
 
-	q.pop();
+	//q.pop();
 	
 
 	q.print();
+
+	cout << q.getSize();
+	cout << endl;
+	q.clear();
+
+	cout << q.getSize();
 
 	cout << endl;
 	system("pause");
