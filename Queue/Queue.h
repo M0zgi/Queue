@@ -17,7 +17,7 @@ public:
 	~QueueRing();
 	void push(T val);
 	T pop();
-	T pop_first();//извлечение первого элемента
+	T pop_front();//извлечение первого элемента
 	T peek();
 	int getSize();
 	void clear();
@@ -84,7 +84,7 @@ inline T QueueRing<T>::pop()
 }
 
 template<class T>
-inline T QueueRing<T>::pop_first()
+inline T QueueRing<T>::pop_front()
 {
 	if (size == 0)
 	{

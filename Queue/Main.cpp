@@ -43,8 +43,8 @@ int main()
 	cout << "Просмотр последнего элемента peek(): ";
 	cout << qr.peek();
 	cout << endl;
-	cout << "Удаление 1-го элемента из очереди pop_first(): ";
-	qr.pop_first();
+	cout << "Удаление 1-го элемента из очереди pop_front(): ";
+	qr.pop_front();
 	cout << endl;
 	qr.print();
 	cout << "getSize: ";
