@@ -1,20 +1,20 @@
-#pragma once
+п»ї#pragma once
 #include"MyData.h"
 
 template<class T, int size>
 class StaticStack
 {
-	MyData<T> data[size]; // элементы хранения
-	int top = 0; //вершина стека
+	MyData<T> data[size]; // СЌР»РµРјРµРЅС‚С‹ С…СЂР°РЅРµРЅРёСЏ
+	int top = 0; //РІРµСЂС€РёРЅР° СЃС‚РµРєР°
 
 public:
-	void push(T val); // положить в стек
-	T pop(); // извлечение из стека
-	T peek(); // просмотр последнего элемента
-	int getSize(); // получить размер стека
-	bool isEmpty(); // проверка пустой ли стек
-	bool isFull(); // проверка полный ли стек
-	void clear(); // очстка стека
+	void push(T val); // РїРѕР»РѕР¶РёС‚СЊ РІ СЃС‚РµРє
+	T pop(); // РёР·РІР»РµС‡РµРЅРёРµ РёР· СЃС‚РµРєР°
+	T peek(); // РїСЂРѕСЃРјРѕС‚СЂ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°
+	int getSize(); // РїРѕР»СѓС‡РёС‚СЊ СЂР°Р·РјРµСЂ СЃС‚РµРєР°
+	bool isEmpty(); // РїСЂРѕРІРµСЂРєР° РїСѓСЃС‚РѕР№ Р»Рё СЃС‚РµРє
+	bool isFull(); // РїСЂРѕРІРµСЂРєР° РїРѕР»РЅС‹Р№ Р»Рё СЃС‚РµРє
+	void clear(); // РѕС‡СЃС‚РєР° СЃС‚РµРєР°
 	void print();
 };
 
@@ -27,7 +27,7 @@ inline void StaticStack<T, size>::push(T val)
 	}
 	else
 	{
-		cout << "Стек переполнен";
+		cout << "РЎС‚РµРє РїРµСЂРµРїРѕР»РЅРµРЅ";
 		cout << endl;
 	}
 }
@@ -82,18 +82,18 @@ inline void StaticStack<T, size>::print()
 template<class T, int size>
 class DynamicStack
 {
-	MyData<T> *data = nullptr; // элементы хранения
-	int top = 0; //вершина стека
+	MyData<T> *data = nullptr; // СЌР»РµРјРµРЅС‚С‹ С…СЂР°РЅРµРЅРёСЏ
+	int top = 0; //РІРµСЂС€РёРЅР° СЃС‚РµРєР°
 
 public:
 	~DynamicStack();
-	void push(T val); // положить в стек
-	T pop(); // извлечение из стека
-	T peek(); // просмотр последнего элемента
-	int getSize(); // получить размер стека
-	bool isEmpty(); // проверка пустой ли стек
-	bool isFull(); // проверка полный ли стек
-	void clear(); // очстка стека
+	void push(T val); // РїРѕР»РѕР¶РёС‚СЊ РІ СЃС‚РµРє
+	T pop(); // РёР·РІР»РµС‡РµРЅРёРµ РёР· СЃС‚РµРєР°
+	T peek(); // РїСЂРѕСЃРјРѕС‚СЂ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°
+	int getSize(); // РїРѕР»СѓС‡РёС‚СЊ СЂР°Р·РјРµСЂ СЃС‚РµРєР°
+	bool isEmpty(); // РїСЂРѕРІРµСЂРєР° РїСѓСЃС‚РѕР№ Р»Рё СЃС‚РµРє
+	bool isFull(); // РїСЂРѕРІРµСЂРєР° РїРѕР»РЅС‹Р№ Р»Рё СЃС‚РµРє
+	void clear(); // РѕС‡СЃС‚РєР° СЃС‚РµРєР°
 	void print() const;
 };
 
@@ -126,7 +126,7 @@ inline void DynamicStack<T, size>::push(T val)
 
 	else
 	{
-		cout << "Стек переполнен";
+		cout << "РЎС‚РµРє РїРµСЂРµРїРѕР»РЅРµРЅ";
 		system("pause");
 		cout << endl;
 	}
@@ -151,7 +151,7 @@ inline T DynamicStack<T, size>::peek()
 		return data->value;
 	else
 	{
-		cout << "Стек пустой!";
+		cout << "РЎС‚РµРє РїСѓСЃС‚РѕР№!";
 		exit(1);
 	}		
 }
