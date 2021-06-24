@@ -139,14 +139,18 @@ inline int QueueRing<T>::getSize()
 template<class T>
 inline void QueueRing<T>::clear()
 {
-	MyData<T>* temp = first;
+	/*MyData<T>* temp = first;
 	while (temp)
 	{
 		first = first->next;
 		delete temp;
 		temp = first;
 		size--;
-	}
+	}*/
+
+	while (size)
+		pop_front();
+	first = last = nullptr;
 }
 
 template<class T>
