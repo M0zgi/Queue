@@ -31,9 +31,7 @@ int main()
 
 	cout << "getSize: ";
 	cout << qr.getSize();
-	cout << endl;
-	
-	
+	cout << endl;	
 	qr.pop();
 	qr.pop();
 	qr.push(6);
@@ -55,6 +53,14 @@ int main()
 	cout << "Просмотр последнего элемента peek(): ";
 	cout << qr.peek();
 	cout << endl;
+	cout << "push(11): ";
+	qr.push(11);
+	qr.print();
+	cout << "1 pop():  ";
+	qr.pop();
+	qr.print();
+	cout << "Просмотр последнего элемента peek(): ";
+	cout << qr.peek();
 	cout << "\n#######################################\n";
 	cout << endl;
 	cout << "Тестирование FIFO (5-ть push() -> 2-a pop(): \n";
