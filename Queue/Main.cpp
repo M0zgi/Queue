@@ -14,11 +14,11 @@ int main()
 
 	locale loc(cout.getloc(), new ::numpunct);
 	cout.imbue(loc);
-
+	
 	
 	cout << "\n#######################################\n";
-
-	cout << "Тестирование кольцевой очереди (5-ть push() -> 2-a pop() 1-ый элемент становится в конец очереди): \n";
+	cout << endl;
+	cout << "Тестирование кольцевой очереди (5-ть push(1-5) -> 2-a pop() 1-ый элемент становится в конец очереди -> 1 push(6) -> 1 pop()): \n";
 
 	QueueRing<int> qr;
 
@@ -36,6 +36,8 @@ int main()
 	
 	qr.pop();
 	qr.pop();
+	qr.push(6);
+	qr.pop();
 	qr.print();
 	cout << "getSize: ";
 	cout << qr.getSize();
@@ -52,9 +54,9 @@ int main()
 	cout << endl;
 	cout << "Просмотр последнего элемента peek(): ";
 	cout << qr.peek();
-
+	cout << endl;
 	cout << "\n#######################################\n";
-
+	cout << endl;
 	cout << "Тестирование FIFO (5-ть push() -> 2-a pop(): \n";
 	Queue<int> qu;
 
@@ -74,9 +76,9 @@ int main()
 	qu.print();
 	cout << "getSize: ";
 	cout << qu.getSize();
-
+	cout << endl;
 	cout << "\n#######################################\n";
-
+	cout << endl;
 	cout << "Тестирование FIFO + шаблонный Arry (2-а push()): \n";
 	
 	Queue<MyArray<int>> q;
@@ -98,11 +100,26 @@ int main()
 	q.clear();
 	cout << "clear -> getSize: ";
 	cout << q.getSize();
+	cout << endl;
+	cout << "\n#######################################\n";
+	cout << endl;
+
+	cout << "Тестирование очереди с приоритетом (4-а push(): (1, LOW), (2, MEGAHIGH), (3, MEDIUM), (4, MEGAHIGH) ): \n";
+
+	QueuePriority<int> qp;
+
+
+	qp.push(1, LOW);
+	qp.push(2, MEGAHIGH);
+	qp.push(3, MEDIUM);
+	qp.push(4, MEGAHIGH);
+	qp.print();
 
 	cout << "\n#######################################\n";
+	cout << endl;
+	//тестирование стек + шаблонный Arry
+	cout << "Тестирование стек (size = 5) + шаблонный Arry: \n";
 
-	/* тестирование стек + шаблонный Arry
-	
 	DynamicStack<MyArray<int>, 5> dst;
 
 
@@ -112,27 +129,37 @@ int main()
 	MyArray<int> a1(3);
 	a1.FillArrayNoSrand();
 
+	cout << "Проверка - стек пустой: ";
 	cout << dst.isEmpty();
 	cout << endl;
+	cout << "Проверка - стек полный: ";
 	cout << dst.isFull();
 	cout << endl;
+
+	cout << "Делаем 2-а push(): \n";
 	dst.push(a);
 	dst.push(a1);
 
 	dst.print();
-	cout << endl;
+
+
+	cout << "Выводим размер стека: ";
 	cout << dst.getSize();
 	cout << endl;
+	cout << "Проверка - стек пустой: ";
 	cout << dst.isEmpty();
 	cout << endl;
+	cout << "Проверка - стек полный: ";
 	cout << dst.isFull();
 	cout << endl;
 	
 	dst.pop();
+	cout << "Делаем 1- pop() и выводим размер стека: ";
 	cout << dst.getSize();
 	cout << endl;
 	dst.print();
-	*/
+	cout << "\n#######################################\n";
+	cout << endl;
 
 	
 	/* тестирование Queue + шаблонный Arry

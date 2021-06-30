@@ -71,13 +71,14 @@ inline T QueueRing<T>::pop()
 	else
 	{		
 		MyData<T>* temp = new MyData<T>;
-		temp->value = first->value;
+		temp->value = first->value;		
 		last->next = temp;
 		last = temp;
 
 		MyData<T>* temp1 = first->next;
-		first->next = first;
-		first = temp1;
+		delete first;
+		first = temp1;		
+		
 	}
 
 	return val;
@@ -284,3 +285,137 @@ inline void Queue<T>::print() const
 }
 
 
+//Очередь с приоритетом
+
+template<class T>
+class QueuePriority
+{
+	MyData<T>* first = nullptr;
+	MyData<T>* last = nullptr;
+	int size = 0;
+
+public:
+	~QueuePriority();
+	void push(T val, PRIORITY pri);
+	T pop();
+	T peek();
+	int getSize();     //получение текущего размера
+	void clear();      //очистка стека
+	void print() const;
+
+};
+
+template<class T>
+inline QueuePriority<T>::~QueuePriority()
+{
+	clear();
+}
+
+template<class T>
+inline void QueuePriority<T>::push(T val, PRIORITY pri)
+{
+	if (size == 0)
+	{
+		first = new MyData<T>;
+		first->value = val;
+		first->pri = pri;
+		last = first;
+	}
+	else
+	{
+		MyData<T>* temp = new MyData<T>;
+		temp->value = val;
+		temp->pri = pri;
+		MyData<T>* temp2 = first;
+		if (last->pri >= pri)
+		{
+			last->next = temp;
+			last = temp;
+		}
+		else
+		{
+			if (pri > first->pri)
+			{
+				temp->next = first;
+				first = temp;
+			}
+			else
+			{
+				while (temp2->pri >= pri && temp2->next->pri >= pri)
+				{
+					temp2 = temp2->next;
+				}
+				temp->next = temp2->next;
+				temp2->next = temp;
+			}
+		}
+	}
+	size++;
+}
+
+template<class T>
+inline T QueuePriority<T>::pop()
+{
+	if (size == 0)
+	{
+		cout << "Queue is empty!!!" << endl;
+		system("pause");
+		exit(1);
+	}
+
+	T val = first->value;
+	if (size == 1)
+	{
+		delete first;
+		first = last = nullptr;
+	}
+	else
+	{
+		MyData<T>* temp = first;
+		first = first->next;
+		delete temp;
+	}
+	size--;
+	return val;
+}
+
+template<class T>
+inline T QueuePriority<T>::peek()
+{
+	if (size > 0)
+	{
+		return first->value;
+	}
+	else
+	{
+		cout << "Queue is empty!!!" << endl;
+		system("pause");
+		exit(1);
+	}
+}
+
+template<class T>
+inline int QueuePriority<T>::getSize()
+{
+	return size;
+}
+
+template<class T>
+inline void QueuePriority<T>::clear()
+{
+	while (size)
+		pop();
+	first = last = nullptr;
+}
+
+template<class T>
+inline void QueuePriority<T>::print() const
+{
+	MyData<T>* temp = first;
+	while (temp)
+	{
+		cout << temp->value << " ";
+		temp = temp->next;
+	}
+	cout << endl;
+}
