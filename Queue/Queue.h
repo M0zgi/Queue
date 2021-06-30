@@ -70,15 +70,20 @@ inline T QueueRing<T>::pop()
 
 	else
 	{		
-		MyData<T>* temp = new MyData<T>;
+		/*MyData<T>* temp = new MyData<T>;
 		temp->value = first->value;		
 		last->next = temp;
 		last = temp;
 
 		MyData<T>* temp1 = first->next;
 		delete first;
-		first = temp1;		
-		
+		first = temp1;	*/	
+
+		MyData<T>* temp = first;
+		first = first->next ;
+		last->next = temp;
+		last = temp;
+		temp->next = nullptr;
 	}
 
 	return val;
